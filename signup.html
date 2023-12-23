@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everent</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <section class="bg-[#1c1f2a] h-[160vh]">
+    <div class=" flex justify-center items-center pt-8">
+      <div class="bg-[#ffc600] py-6 px-6 rounded-md">
+        <div class="pb-4">
+            <div class="pb-4">
+                <img src="./img/main-Logo.png" alt="">
+            </div>
+            <span class="text-[30px] text-[#1c1f2a] font-bold py-3">Sign up</span>
+            <p class="text-[14px] text-[#1c1f2a] font-bold">Enter your details below to create your account and get started.</p>
+        </div>
+        <div>
+            <div>
+                <form id="signupForm" class="flex flex-col justify-center items-center">
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold ">Username</label>
+                    <br>
+                    <input id="username" required name="username" type="text" placeholder="enter..." class="border-[1px] border-[#1c1f2a] py-3 w-[350px] pl-8 bg-transparent rounded-md">
+                   </div>
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold ">First Name</label>
+                    <br>
+                    <input id="firstName" required type="text" name="firstName" placeholder="enter..." class="border-[1px] border-[#1c1f2a] py-3 w-[350px] pl-8 bg-transparent rounded-md">
+                   </div>
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold">Last Name</label>
+                    <br>
+                    <input id="lastName" required type="text" name="lastName" placeholder="enter..." class="border-[1px] py-3 w-[350px] border-[#1c1f2a] pl-8 bg-transparent rounded-md ">
+                   </div>
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold">Your age</label>
+                    <br>
+                    <input id="age" type="text" placeholder="age in years" name="age" class="border-[1px] border-[#1c1f2a] py-3 w-[350px] pl-8 bg-transparent rounded-md">
+                   </div>
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold" >Email</label>
+                    <br>
+                    <input id="email" required type="email" name="email" placeholder="example@gmail.com" class="border-[1px] border-[#1c1f2a] py-3 w-[350px] pl-8 bg-transparent rounded-md ">
+                   </div>
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold ">Select your image</label>
+                    <br>
+                    <input id="imageIn" required type="file" name="image" class="border-[1px] border-[#1c1f2a] py-3 w-[350px] pl-8 bg-transparent rounded-md">
+                   </div>
+                   <div class="py-3 pr-64">
+                    <label for="" class="text-[20px] text-[#1c1f2a] font-bold">Gender</label>
+                    <br>
+                    <input id="isMale" required class="px-6" type="radio" name="gender" value="male">Male
+                    <br>
+                    <input id="isFemale" required type="radio" name="gender" value="female">Female
+                   </div>
+                   
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold">Password</label>
+                    <br>
+                    <input id="password" name="password" type="password" required placeholder="enter..." class="border-[1px] py-3 border-[#1c1f2a] w-[350px] pl-8 bg-transparent rounded-md">
+                   </div>
+                   <div class="py-3">
+                    <label for="" class="text-[16px] text-[#1c1f2a] font-bold">confirm Password</label>
+                    <br>
+                    <input id="cPassword" name="cPassword"  type="password" required placeholder="enter..." class="border-[1px] py-3 border-[#1c1f2a] w-[350px] pl-8 bg-transparent rounded-md">
+                   </div>
+                   <div class="flex gap-12 py-3">
+                    <div >
+                        <button id="submitBtn" type="submit" class="py-3 cursor-pointer w-[150px] border-[#1c1f2a] border-[1px] rounded-md font-bold text-[#1c1f2a] hover:bg-[#1c1f2a] hover:text-[#fff] duration-500">Confirm</button>
+                    </div>
+                    <div>
+                        <button class="py-3  w-[150px] border-[#1c1f2a] border-[1px] rounded-md font-bold text-[#1c1f2a] hover:bg-[#1c1f2a] hover:text-[#fff] duration-500">cancel</button>
+                    </div>
+                   </div>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    
+    const signupForm =  document.getElementById('signupForm');
+        signupForm.addEventListener('submit', async(e)=>{
+        e.preventDefault();
+      const prePayload = new FormData(signupForm);
+      try{
+        const res = await axios.post('https://eve-rent-online-booking-9ijy0yeos-basants-projects.vercel.app/auth/signup', prePayload)
+        console.log(res)
+        window.location.replace('/')
+      }catch(e) {
+        console.error('There was a problem with your fetch operation:', error);
+      }
+    })
+    
+  </script>
+  <!-- <script src="./singup.js"> -->
+   </script>
+</body>
+</html>
